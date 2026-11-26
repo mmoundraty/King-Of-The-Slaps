@@ -89,8 +89,3 @@ Values that both the server and the client rely on live in `src/shared/GameConfi
 | `SPLEEF_FADE_TIME` | How long a tile takes to fade out or come back |
 
 Settings that only one script uses stay at the top of that script. For example, round length, intermission length, the player minimum and the double-points window are at the top of `RoundManager`, and tile hold times are at the top of `SpleefTiles`.
-
-## Known issues
-
-- **The results screen is slow in big lobbies.** At the end of a round every player respawns at once. With about 60 players, each player has to download every new character, so characters appear one by one and the results screen can take around 30 seconds to show up. A likely fix is to teleport players back and remove their power-ups instead of respawning everyone.
-- **Some admin buttons may not work.** The Start, End and Carpet Bombana buttons are wired up in a server script, and server scripts don't receive button clicks. Kick and Ban work because they go through the client. The fix is to move those three buttons into `AdminPanel` and send them to the server through a RemoteEvent.
